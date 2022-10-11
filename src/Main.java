@@ -27,6 +27,10 @@ public class Main
         int myFav = getRangedInt(console, "Enter your favorite int", 1, 100);
         int myFavDoubled = doubleIt(myFav);
         System.out.println("Doubled is : " + myFavDoubled);
+        System.out.println();
+
+        int year = getInt (console, "Enter a year of birth");
+        System.out.println("You said the year is: " + year);
     }
     //user defined Methods go here and are static
 
@@ -66,7 +70,7 @@ public class Main
 
         boolean done = false;
         do {
-            System.out.print(prompt + ": ");
+            System.out.print(prompt + "[" + low + " - " + high +"] : ");
             if(pipe.hasNextInt())
             {
                 retVal = pipe.nextInt();
@@ -80,7 +84,30 @@ public class Main
             } else  //did not have an int
             {
                 trash = pipe.nextLine();
-                System.out.println("you entered: " + trash + ". You must enter a valid price!");
+                System.out.println("you entered: " + trash + ". You must enter a valid val!");
+            }
+        }while(!done);
+
+        return retVal;
+    }
+
+    public static int getInt(Scanner pipe, String prompt) //returns an int
+    {
+        int retVal = 0;
+        String trash = "";
+
+        boolean done = false;
+        do {
+            System.out.print(prompt + ": ");
+            if(pipe.hasNextInt())
+            {
+                retVal = pipe.nextInt();
+                pipe.nextLine(); //clear the new line from the buffer
+                done = true;
+            } else  //did not have an int
+            {
+                trash = pipe.nextLine();
+                System.out.println("you entered: " + trash + ". You must enter a valid val!");
             }
         }while(!done);
 
