@@ -1,91 +1,7 @@
 import java.util.Scanner;
 
-public class Main
+public class SafeInput
 {
-    //class variables go here and are visible to the methods below main
-    public static void main(String[] args) //public means accessible, static means that when create objects they are not static, void is return type of method
-            // scanner.nextInt returns an int
-            // method static when don't belong to object
-            // void means doesn't return anything
-
-    {
-       /*
-        Scanner console = new Scanner(System.in);
-
-        //for(int rep = 0; rep <10; rep++)
-            sayHello(); // prints hello one time
-        System.out.println();
-
-        sayHello(10); // prints hello ten times
-        System.out.println();
-
-        sayMsg("Life sucks!", 35);
-        System.out.println();
-
-
-        int myFav = 7;
-        int myFavDoubled = doubleIt(myFav);
-        System.out.println("Doubled is : " + myFavDoubled);
-
-
-        int myFav = getRangedInt(console, "Enter your favorite int", 1, 100);
-        int myFavDoubled = doubleIt(myFav);
-        System.out.println("Doubled is : " + myFavDoubled);
-        System.out.println();
-
-        int year = getInt (console, "Enter a year of birth");
-        System.out.println("You said the year is: " + year);
-        */
-
-        Scanner in = new Scanner(System.in);
-
-        //int favNum = SafeInput.getRangedInt(in, "enter your fav num ", 1, 100);
-
-        //int anyInt = getInt(in, "enter an int");
-
-        //double salary = getDouble(in, "enter your salary");
-        //System.out.println("you said your salary was: " + salary);
-
-        //double tax = getRangedDouble(in, "enter your tax ", 100, 1000);
-        //System.out.println("You said your tax was: " + tax);
-
-        String msg = getNonZeroLength(in, "enter any string other than zero length: ");
-        System.out.println("Msg is: " + msg);
-
-    }
-    //user defined Methods go here and are static
-
-
-    public static void sayHello()//first line is method signature
-    {
-        System.out.println("Hello");
-    }
-
-
-    public static void sayHello(int times)//first line is method signature
-            //when you have two versions that do the same thing, it is called overloaded
-    {
-        for(int rep = 0; rep < times; rep++)
-            System.out.println("Hello");
-    }
-
-    public static void sayMsg(String msg, int times)//first line is method signature
-    //when you have two versions that do the same thing, it is called overloaded
-    {
-        for(int rep = 0; rep < times; rep++)
-            System.out.println(msg);
-    }
-
-    public static int doubleIt(int toBeDoubled)
-    {
-        int doubledVal = toBeDoubled * 2;
-
-        return doubledVal;
-
-        //return toBeDoubled * 2;
-    }
-
-// below is the java doc block
     /**
      * Get an integer value within a specified range of low - high
      *
@@ -123,14 +39,14 @@ public class Main
         return retVal;
     }
 
+
     /**
      * use scanner to get an int from the console with no constraints
      *
-      * @param pipe scanner to use for console input
+     * @param pipe scanner to use for console input
      * @param prompt string prompt that tells the user what to input
      * @return an integer value
      */
-
     public static int getInt(Scanner pipe, String prompt) //returns an int
     {
         int retVal = 0;
@@ -155,6 +71,7 @@ public class Main
         return retVal;
     }
 
+
     /**
      * use scanner to get a double from the console with no constraints
      *
@@ -162,7 +79,6 @@ public class Main
      * @param prompt string prompt that tells the user what to input
      * @return a double value
      */
-
     public static double getDouble(Scanner pipe, String prompt) //returns a double
     {
         double retVal = 0;
@@ -186,6 +102,7 @@ public class Main
 
         return retVal;
     }
+
 
     /**
      * Get a double value within a specified range of low - high
@@ -214,7 +131,7 @@ public class Main
                 } else {
                     System.out.println("You said the val is " + retVal + " but that is out of range [" + low + " - " + high + "]");
                 }
-            } else  //did not have a double
+            } else  //did not have an int
             {
                 trash = pipe.nextLine();
                 System.out.println("you entered: " + trash + ". You must enter a valid val!");
@@ -223,6 +140,7 @@ public class Main
 
         return retVal;
     }
+
 
     /**
      * Get an arbitrary string of at least one character in length
@@ -242,7 +160,7 @@ public class Main
             retVal = pipe.nextLine();
             if(retVal.length() > 0)
             {
-            done = true;
+                done = true;
             }
             else
             {
@@ -253,10 +171,6 @@ public class Main
 
         return retVal;
     }
-
-
-
-
 
 
 }
