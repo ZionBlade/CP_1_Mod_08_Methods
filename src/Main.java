@@ -9,9 +9,9 @@ public class Main
             // void means doesn't return anything
 
     {
-       /*
-        Scanner console = new Scanner(System.in);
 
+        Scanner console = new Scanner(System.in);
+/*
         //for(int rep = 0; rep <10; rep++)
             sayHello(); // prints hello one time
         System.out.println();
@@ -37,7 +37,7 @@ public class Main
         System.out.println("You said the year is: " + year);
         */
 
-        Scanner in = new Scanner(System.in);
+        //Scanner in = new Scanner(System.in);
 
         //int favNum = SafeInput.getRangedInt(in, "enter your fav num ", 1, 100);
 
@@ -49,8 +49,11 @@ public class Main
         //double tax = getRangedDouble(in, "enter your tax ", 100, 1000);
         //System.out.println("You said your tax was: " + tax);
 
-        String msg = getNonZeroLength(in, "enter any string other than zero length: ");
-        System.out.println("Msg is: " + msg);
+        //String msg = getNonZeroLength(in, "enter any string other than zero length: ");
+        //System.out.println("Msg is: " + msg);
+
+        boolean isRaining = getYNConfirm(console, "Is it raining");
+        System.out.println("it is raining: " + isRaining);
 
     }
     //user defined Methods go here and are static
@@ -254,7 +257,71 @@ public class Main
         return retVal;
     }
 
+    /**
+     *
+     * @param pipe
+     * @param prompt
+     * @param pattern
+     * @return
+     */
+    public static String getRegExString(Scanner pipe, String prompt, String pattern)
+    {
+        String retVal = "";
+        boolean done = false;
 
+        do {
+            System.out.print(prompt + ": ");
+
+            retVal = pipe.nextLine();
+            if(retVal.matches(pattern))
+            {
+                done = true;
+            }
+            else
+            {
+
+                System.out.println("What you entered does not match the pattern: " + pattern);
+            }
+        }while(!done);
+
+        return retVal;
+    }
+
+    /**
+     * gets a Y or N from the user and returns a True or False repsectively
+     *
+     * @param pipe
+     * @param prompt
+     * @return
+     */
+    public static boolean getYNConfirm(Scanner pipe, String prompt)
+    {
+        String respYN = "";
+        boolean retVal = false;
+        boolean done = false;
+
+        do{
+            System.out.print(prompt + " [Y/N]: ");
+            respYN = pipe.nextLine();
+
+            if(respYN.equalsIgnoreCase("Y"))
+            {
+                retVal = true;
+                done = true;
+            }
+            else if (respYN.equalsIgnoreCase("N"))
+            {
+                retVal = false;
+                done = true;
+            }
+            else{
+                System.out.println("you must enter [Y/N]: ");
+            }
+
+        } while(!done);
+
+        return retVal;
+    }
 
 
 

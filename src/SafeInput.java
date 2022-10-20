@@ -172,5 +172,71 @@ public class SafeInput
         return retVal;
     }
 
+    /**
+     *gets a string that matches a regular expression pattern like ###-##-### \d{3}-\d{2}-\d{4}
+     *
+     * @param pipe scanner to use for input
+     * @param prompt prompt that tells the user what we want
+     * @param pattern A regEx Pattern to use for the test
+     * @return a string entered by the user that matches the pattern
+     */
+    public static String getRegExString(Scanner pipe, String prompt, String pattern)
+    {
+        String retVal = "";
+        boolean done = false;
+
+        do {
+            System.out.print(prompt + ": ");
+
+            retVal = pipe.nextLine();
+            if(retVal.matches(pattern))
+            {
+                done = true;
+            }
+            else
+            {
+
+                System.out.println("What you entered does not match the pattern: " + pattern);
+            }
+        }while(!done);
+
+        return retVal;
+    }
+
+    /**
+     * gets a Y or N from the user and returns a True or False respectively
+     *
+     * @param pipe scanner to use to get the input
+     * @param prompt string prompt for the user the yes/no question
+     * @return a boolean value true for Y and false for N
+     */
+    public static boolean getYNConfirm(Scanner pipe, String prompt)
+    {
+        String respYN = "";
+        boolean retVal = false;
+        boolean done = false;
+
+        do{
+            System.out.print(prompt + " [Y/N]: ");
+            respYN = pipe.nextLine();
+
+            if(respYN.equalsIgnoreCase("Y"))
+            {
+                retVal = true;
+                done = true;
+            }
+            else if (respYN.equalsIgnoreCase("N"))
+            {
+                retVal = false;
+                done = true;
+            }
+            else{
+                System.out.println("you must enter [Y/N]: ");
+            }
+
+        } while(!done);
+
+        return retVal;
+    }
 
 }
